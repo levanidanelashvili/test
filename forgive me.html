@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>9 მიზეზი რატომ ვარ კარგი შეყვარებული 💘</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      color: #333;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      color: #d6336c;
+      margin-bottom: 25px;
+    }
+
+    .start-button, .reason-button, .next-button {
+      background-color: #fff;
+      border: 2px solid #d6336c;
+      color: #d6336c;
+      padding: 10px 20px;
+      margin: 10px auto;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .start-button:hover, .reason-button:hover, .next-button:hover {
+      background-color: #d6336c;
+      color: #fff;
+    }
+
+    .reason-container {
+      display: none;
+      margin: 20px auto;
+      max-width: 600px;
+      background-color: #fff6f9;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .reason-text {
+      margin: 10px 0;
+    }
+
+    .reason-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .reason-detail {
+      font-size: 1em;
+      line-height: 1.5;
+      color: #555;
+    }
+
+    .final-page {
+      display: none;
+      margin-top: 30px;
+    }
+
+    .answer-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .answer-buttons button {
+      padding: 12px 24px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 120px;
+    }
+
+    .yes-button {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .no-button {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .error-message {
+      margin-top: 20px;
+      color: #dc3545;
+      font-weight: bold;
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 1.5em;
+      }
+      .reason-title {
+        font-size: 1.1em;
+      }
+      .reason-detail {
+        font-size: 0.95em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1>9 მიზეზი რატომ ვარ კარგი შეყვარებული 💘</h1>
+
+<button class="start-button" onclick="startReasons()">დაიწყე თუ არ გიყვარვარ 🙃</button>
+
+<div id="reasonContainer" class="reason-container">
+  <div id="reasonText" class="reason-text">
+    <div class="reason-title"></div>
+    <div class="reason-detail"></div>
+  </div>
+  <button class="next-button" onclick="showNextReason()">შემდეგი ❤️</button>
+</div>
+
+<div id="finalPage" class="final-page">
+  <h2>გამოგიკეთე ხასიათი? 😊</h2>
+  <div class="answer-buttons">
+    <button class="yes-button" onclick="window.location.href='https://www.youtube.com/watch?v=nyuo9-OjNNg'">კი</button>
+    <button class="no-button" onclick="showError()">არა</button>
+  </div>
+  <div id="errorMessage" class="error-message"></div>
+</div>
+
+<script>
+  const reasons = [
+    {
+      title: "📬 გწერ ყოველდღე და ვუსმენ შენს წუწუნს სიამოვნებით.",
+      detail: "იმიტომ, რომ შენთან მიმოწერა სიამოვნებას მანიჭებს — გინდ ბუზღუნებდე 😄"
+    },
+    {
+      title: "💘 ერთგული ვარ. ღალატი ცუდია (ლუზერებისთვისაა ეგ).😤🚫",
+      detail: "შენს გვერდით ვარ ყოველთვის — თუნდაც საჭმელების გემოვნებაზე ვერ ვემთხვეოდეთ 🍕🥦"
+    },
+    {
+      title: "🫶 გაჩვენებ ყოველთვის ჩემს სიყვარულს... თუ გამაბრაზებ — ცოტა ნაკლებად.",
+      detail: "ანუ, ბალანსია ყველაფერი 😅😌⚖️"
+    },
+    {
+      title: "🙃 შეგიძლია ნებისმიერი კითხვა დამისვა და მაინც სერიოზულად გიპასუხებ.",
+      detail: "თუნდაც კითხვა იყოს: „მეეეე? ნერვებს გიშლი?🤷‍♀️🙄“"
+    },
+    {
+      title: "💔❤️ ისეთს არაფერს ვიტყვი რომ გატკინო.",
+      detail: "და თუ ვთქვი — მეცოდინება, რომ აღარ უნდა ვთქვა მეორედ🤐💡"
+    },
+    {
+      title: "🤗 შენს მხარეს ვარ ყოველთვის — განსაკუთრებით როცა გაბრაზებული ხარ ჩემზე.",
+      detail: "იმიტომ, რომ ყველაზე მეტად მაშინ გჭირდება სიყვარული❤️"
+    },
+    {
+      title: "🌞 შენი ბედნიერება ჩემთვის მთავარი მისიაა🎯",
+      detail: "თუ შენ იღიმი — მთელი სამყარო კარგადაა🌍😄"
+    },
+    {
+      title: "🚗 შენთან პატარა რაღაცებიც განსაკუთრებული ხდება✨",
+      detail: "ჩემი სუპერ გამართული მანქანის ტარება, ფილმის ყურება, ჯდომა და სქროლვა — ყველაფერს სხვა გემო აქვს შენთან🎥🍿💑"
+    },
+    {
+      title: "😊 შენი ბედნიერი სახე ჩემთვის ყველაზე ლამაზი სანახავია🥰",
+      detail: "და როცა მოწყენილი ხარ — ვცდილობ, შენს გულს ისევ ფერები დავუბრუნო🎨🌈. რამდენად გამომდის ეგ უკვე სხვა საკითხია 😅"
+    }
+  ];
+
+  let currentReason = 0;
+
+  function startReasons() {
+    document.querySelector('.start-button').style.display = 'none';
+    document.getElementById('reasonContainer').style.display = 'block';
+    showReason(currentReason);
+  }
+
+  function showReason(index) {
+    document.querySelector('.reason-title').innerHTML = reasons[index].title;
+    document.querySelector('.reason-detail').innerHTML = reasons[index].detail;
+  }
+
+  function showNextReason() {
+    currentReason++;
+    if (currentReason < reasons.length) {
+      showReason(currentReason);
+    } else {
+      document.getElementById('reasonContainer').style.display = 'none';
+      document.getElementById('finalPage').style.display = 'block';
+    }
+  }
+
+  function showError() {
+    document.getElementById('errorMessage').innerText = "❌ შეცდომა: თავიდან გადახედეთ მიზეზებს 🙃";
+  }
+</script>
+
+</body>
+</html>
